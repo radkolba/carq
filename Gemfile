@@ -19,6 +19,11 @@ gem 'will_paginate'
 
 gem 'bootstrap-will_paginate'
 
+gem 'carrierwave',             '1.2.2'
+
+gem 'mini_magick',             '4.7.0'
+
+
 # Use sqlite3 as the database for Active Record
 #gem 'sqlite3'
 # Use Puma as the app server
@@ -55,6 +60,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :production do
   gem 'pg', '0.18.4'
+  gem 'fog', '1.42'
 end
 
 group :development, :test do
