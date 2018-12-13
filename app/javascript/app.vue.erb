@@ -1,0 +1,56 @@
+<template>
+  <div id="app">
+      <header class="navbar navbar-fixed-top navbar-inverse">
+          <div class="container">
+              <%= link_to "sample app", root_path, id: "logo" %>
+              <nav>
+                  <ul class="nav navbar-nav navbar-right flex-direction-row">
+                      <li><%= link_to "Home",   root_path %></li>
+                      <li><%= link_to "Help",   help_path %></li>
+                      <% if logged_in? %>
+                      <li><%= link_to "Users", users_path %></li>
+                      <li class="dropdown">
+                          <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                              Account <b class="caret"></b>
+                          </a>
+                          <ul class="dropdown-menu">
+                              <li><%= link_to "Profile", current_user %></li>
+                              <li><%= link_to "Settings", edit_user_path(current_user) %></li>
+                              <li class="divider"></li>
+                              <li>
+                                  <%= link_to "Log out", logout_path, method: :delete %>
+                              </li>
+                          </ul>
+                      </li>
+                      <% else %>
+                      <li><%= link_to "Log in", login_path %></li>
+                      <% end %>
+                  </ul>
+              </nav>
+          </div>
+      </header>
+      <router-view></router-view>
+      <p>Say: {{ message }}</p>
+  </div>
+</template>
+
+<script>
+    import 'bootstrap/dist/css/bootstrap.css'
+    import 'bootstrap-vue/dist/bootstrap-vue.css'
+    import BootstrapCard from '../javascript/components/BootstrapCard.vue';
+export default {
+  data: function () {
+    return {
+      message: "Hey Vue!"
+    }
+  },
+  components: {BootstrapCard}
+}
+</script>
+
+<style scoped>
+p {
+  font-size: 2em;
+  text-align: center;
+}
+</style>
